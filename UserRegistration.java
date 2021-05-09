@@ -55,6 +55,22 @@ public class UserRegistration {
             System.out.println("Your Mobile Number is inValid,please try again with condition");
         }
     }
+    /**
+     * @description create method for Password
+     *
+     */
+    private void password () {
+        System.out.println("Enter the Your Password");
+        String password = sc.nextLine();
+        String regex = "^[A-Z0-9a-z]{8,}$";   //Regex Pattern
+        //Matching the given password with regular expression
+        boolean passcode = password.matches(regex);
+        if (passcode){  //Verifying whether given Password is valid
+            System.out.println("Valid Password");
+        } else {
+            System.out.println("Your Password is inValid,please try again with condition");
+        }
+    }
     //Explaining how to Implement the Computation
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Program");
@@ -68,5 +84,7 @@ public class UserRegistration {
         eMailAddress.eMailAddress();
         UserRegistration mobileNumber = new UserRegistration(); //creating mobileNumber object
         mobileNumber.mobileFormat();
+        UserRegistration password = new UserRegistration(); //creating password object
+        password.password();
     }
 }
