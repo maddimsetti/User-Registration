@@ -62,7 +62,7 @@ public class UserRegistration {
     private void password () {
         System.out.println("Enter the Your Password");
         String password = sc.nextLine();
-        String regex = "^[A-Z0-9a-z]{8,}$";   //Regex Pattern
+        String regex = "^[A-Z{1,}0-9a-z]{8,}$";   //Regex Pattern
         //Matching the given password with regular expression
         boolean passcode = password.matches(regex);
         if (passcode){  //Verifying whether given Password is valid
