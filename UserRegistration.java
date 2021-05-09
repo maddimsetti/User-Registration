@@ -26,5 +26,8 @@ public class UserRegistration {
         System.out.println("Enter the First Name");
         UserRegistration firstName = new UserRegistration(); //creating firstname object
         firstName.nameValidation();
+        System.out.println("Enter the Last Name");
+        UserRegistration lastName = new UserRegistration(); //creating lastname object
+        lastName.nameValidation();
     }
 }
