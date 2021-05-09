@@ -36,7 +36,23 @@ public class UserRegistration {
         if (eMail) { //Verifying whether given eMailAddress is valid
             System.out.println("Valid EMail Address");
         } else {
-            System.out.println("EMail Address Not Valid. Try using Conditions");
+            System.out.println("Your EMail Address is inValid. Try using Conditions");
+        }
+    }
+    /**
+     * @description create method for Mobile Number
+     *
+     */
+    private void mobileFormat () {
+        System.out.println("Enter the Mobile Number");
+        String mobileNumber = sc.nextLine();
+        String regex = "^[1-9]{2} [1-9][0-9]{9}$";   //Regex Pattern
+        //Matching the given Mobile Number with regular expression
+        boolean mobile = mobileNumber.matches(regex);
+        if (mobile){  //Verifying whether given Number is valid
+            System.out.println("Valid Number");
+        } else {
+            System.out.println("Your Mobile Number is inValid,please try again with condition");
         }
     }
     //Explaining how to Implement the Computation
@@ -50,5 +66,7 @@ public class UserRegistration {
         lastName.nameValidation();
         UserRegistration eMailAddress = new UserRegistration(); //creating eMailAddress object
         eMailAddress.eMailAddress();
+        UserRegistration mobileNumber = new UserRegistration(); //creating mobileNumber object
+        mobileNumber.mobileFormat();
     }
 }
