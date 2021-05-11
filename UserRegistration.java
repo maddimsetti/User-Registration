@@ -1,6 +1,8 @@
 package com.userregistration;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
+
 /**
  * @description create class for Defining the User Registration program
  *
@@ -8,8 +10,10 @@ import java.util.Scanner;
 public class UserRegistration {
     //constant
     private static final Scanner sc = new Scanner(System.in);
+
     /**
      * @description create method for name Validation
+     *
      *
      */
     private void nameValidation () {
@@ -23,6 +27,7 @@ public class UserRegistration {
             System.out.println("Name Not Valid. Try using Conditions");
         }
     }
+
     /**
      * @description create method for Email Address
      *
@@ -39,6 +44,7 @@ public class UserRegistration {
             System.out.println("Your EMail Address is inValid. Try using Conditions");
         }
     }
+
     /**
      * @description create method for Mobile Number
      *
@@ -55,6 +61,7 @@ public class UserRegistration {
             System.out.println("Your Mobile Number is inValid,please try again with condition");
         }
     }
+
     /**
      * @description create method for Password
      *
@@ -62,15 +69,16 @@ public class UserRegistration {
     private void password () {
         System.out.println("Enter the Your Password");
         String password = sc.nextLine();
-        String regex = "^[A-Z{1,}0-9a-z]{8,}$";   //Regex Pattern
+        String regex = "^(?=.*[A-z])(?=.*[0-9])(?=.*[a-z]).{8,}$";   //Regex Pattern
         //Matching the given password with regular expression
         boolean passcode = password.matches(regex);
-        if (passcode){  //Verifying whether given Password is valid
-            System.out.println("Valid Password");
+        if (passcode){  //Verifying whether given password is valid
+            System.out.println("Valid password");
         } else {
-            System.out.println("Your Password is inValid,please try again with condition");
+            System.out.println("Your password is inValid,please try again with condition");
         }
     }
+
     //Explaining how to Implement the Computation
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Program");
