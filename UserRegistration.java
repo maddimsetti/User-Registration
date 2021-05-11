@@ -10,38 +10,58 @@ import java.util.regex.Pattern;
 public class UserRegistration {
     //constant
     private static final Scanner sc = new Scanner(System.in);
+    //Regex Patterns
+    private static final String FIRST_NAME_PATTERN = "^[A-Z][a-zA-Z]{3,}$";
+    private static final String LAST_NAME_PATTERN = "^[A-Z][a-zA-Z]{3,}$";
+    private static final String EMAIL_ADDRESS = "^[a-z0-9]+(([.+-_][a-z0-9])?)+(@[a-z0-9]{1})+(.[a-z]{3,4})+((.[a-z]{2})?)$";
+    private static final String MOBILE_FORMAT = "^[1-9]{2} [1-9][0-9]{9}$";
+    private static final String PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@~#$%^&*()]).{8,}$";
+    /**
+     * @description create method for Validating the FirstName
+     */
+    public boolean firstNameValidation(String firstName) {
+        //Matching the given FirstName with regular expression
+        Pattern pattern = Pattern.compile(FIRST_NAME_PATTERN);
+        boolean result = pattern.matcher(firstName).matches();
+        if (result) { //Verifying whether given firstName is valid
+            System.out.println("Your First Name is Proper And Valid");
+            return true;
+        } else {
+            System.out.println("Your First Name is inValid,Please try again with condition");
+            return false;
+        }
+    }
 
     /**
-     * @description create method for name Validation
-     *
+     * @description create Method for Validating the LastName
      *
      */
-    private void nameValidation () {
-        String name = sc.nextLine();
-        String regex = "^[A-Z][a-zA-Z]{3,}$";   //Regex Pattern
-        //Matching the given name with regular expression
-        boolean result = name.matches(regex);
-        if (result) { //Verifying whether given name is valid
-            System.out.println("Valid Name");
+    public boolean lastNameValidation(String lastName) {
+        //Matching the given LastName with regular expression
+        Pattern pattern = Pattern.compile(LAST_NAME_PATTERN);
+        boolean result = pattern.matcher(lastName).matches();
+        if (result) { //Verifying whether given lastName is valid
+            System.out.println("Your Last Name is Proper And Valid");
+            return true;
         } else {
-            System.out.println("Name Not Valid. Try using Conditions");
+            System.out.println("Your Last Name is inValid,Please try again with condition");
+            return false;
         }
     }
 
     /**
      * @description create method for Email Address
-     *
      */
-    private void eMailAddress () {
-        System.out.println("Enter the Email Address");
-        String eMailAddress = sc.nextLine();
-        String regex = "^[a-z0-9]+(([.+-_][a-z0-9])?)+(@[a-z0-9]{1})+(.[a-z]{3,4})+((.[a-z]{2})?)$";//Regex Pattern
+    public boolean eMailAddress(String email) {
         //Matching the given eMailAddress with regular expression
-        boolean eMail = eMailAddress.matches(regex);
-        if (eMail) { //Verifying whether given eMailAddress is valid
-            System.out.println("Valid EMail Address");
+        Pattern pattern = Pattern.compile(EMAIL_ADDRESS);
+        boolean result = pattern.matcher(email).matches();
+        if (result) { //Verifying whether given eMailAddress is valid
+            System.out.println("Your Email Address is Proper And Valid");
+            return true;
         } else {
-            System.out.println("Your EMail Address is inValid. Try using Conditions");
+            System.out.println("Your Email Address is inValid,please try again with condition");
+            return false;
         }
     }
 
@@ -49,16 +69,16 @@ public class UserRegistration {
      * @description create method for Mobile Number
      *
      */
-    private void mobileFormat () {
-        System.out.println("Enter the Mobile Number");
-        String mobileNumber = sc.nextLine();
-        String regex = "^[1-9]{2} [1-9][0-9]{9}$";   //Regex Pattern
+    public boolean mobileFormat (String mobileNumber) {
         //Matching the given Mobile Number with regular expression
-        boolean mobile = mobileNumber.matches(regex);
-        if (mobile){  //Verifying whether given Number is valid
-            System.out.println("Valid Number");
+        Pattern pattern = Pattern.compile(MOBILE_FORMAT);
+        boolean result = pattern.matcher(mobileNumber).matches();
+        if (result){  //Verifying whether given Number is valid
+            System.out.println("Your Mobile Number is Proper And Valid");
+            return true;
         } else {
             System.out.println("Your Mobile Number is inValid,please try again with condition");
+            return false;
         }
     }
 
@@ -66,16 +86,16 @@ public class UserRegistration {
      * @description create method for Password
      *
      */
-    private void password () {
-        System.out.println("Enter the Your Password");
-        String password = sc.nextLine();
-        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@~#$%^&*()]).{8,}$";   //Regex Pattern
+    public boolean password (String password) {
         //Matching the given password with regular expression
-        boolean passcode = password.matches(regex);
-        if (passcode){  //Verifying whether given password is valid
-            System.out.println("Valid password");
+        Pattern pattern = Pattern.compile(PASSWORD);
+        boolean result = pattern.matcher(password).matches();
+        if (result){  //Verifying whether given password is valid
+            System.out.println("Your Password is Proper And Valid");
+            return true;
         } else {
             System.out.println("Your password is inValid,please try again with condition");
+            return false;
         }
     }
 
@@ -84,15 +104,18 @@ public class UserRegistration {
         System.out.println("Welcome to User Registration Program");
         System.out.println("Enter the First Name");
         UserRegistration firstName = new UserRegistration(); //creating firstname object
-        firstName.nameValidation();
+        firstName.firstNameValidation(sc.nextLine());
         System.out.println("Enter the Last Name");
         UserRegistration lastName = new UserRegistration(); //creating lastname object
-        lastName.nameValidation();
+        lastName.lastNameValidation(sc.nextLine());
+        System.out.println("Enter the Email Address");
         UserRegistration eMailAddress = new UserRegistration(); //creating eMailAddress object
-        eMailAddress.eMailAddress();
+        eMailAddress.eMailAddress(sc.nextLine());
+        System.out.println("Enter the Mobile Number");
         UserRegistration mobileNumber = new UserRegistration(); //creating mobileNumber object
-        mobileNumber.mobileFormat();
+        mobileNumber.mobileFormat(sc.nextLine());
+        System.out.println("Enter the Your Password");
         UserRegistration password = new UserRegistration(); //creating password object
-        password.password();
+        password.password(sc.nextLine());
     }
 }
